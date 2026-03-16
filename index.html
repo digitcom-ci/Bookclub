@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
 *{
 box-sizing:border-box;
 margin:0;
@@ -16,27 +15,19 @@ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
 /* PAGE */
-
 body{
-
 background-image:url("https://images.unsplash.com/photo-1507842217343-583bb7270b66");
 background-size:cover;
 background-position:center;
-
 min-height:100vh;
-
 display:flex;
-align-items:center;
+align-items:flex-start;
 justify-content:center;
-
 padding:20px;
-
 }
 
 /* overlay */
-
 body::before{
-
 content:"";
 position:fixed;
 top:0;
@@ -45,225 +36,145 @@ width:100%;
 height:100%;
 background:rgba(0,0,0,0.55);
 z-index:0;
-
 }
 
 /* CONTAINER */
-
 .container{
-
 position:relative;
 z-index:1;
-
 width:100%;
 max-width:800px;
-
-height:1200px;
-
 background:white;
-
 border-radius:18px;
-
 padding:35px 30px;
-
 box-shadow:0 20px 40px rgba(0,0,0,0.35);
-
 }
 
 /* TITRE */
-
 h1{
-
 font-size:40px;
 margin-bottom:8px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 text-align:center;
-
 gap:8px;
-
 color:#5b3f2a;
-
 }
-
-p{
-
+p.subtitle{
 font-size:30px;
 color:#777;
 text-align:center;
 margin-bottom:50px;
-
 }
 
 /* INPUTS */
-
 .input-group{
-
 position:relative;
-
 margin-bottom:23px;
-
 }
-
 .input-group i{
-
 position:absolute;
 left:20px;
 top:50%;
 transform:translateY(-50%);
 color:#7b5b46;
 font-size:30px;
-
 }
-
-input, textarea{
-
+input, textarea, select{
 width:100%;
-
 padding:18px 18px 18px 45px;
-
 border-radius:10px;
-
 border:1px solid #ddd;
-
 font-size:25px;
-
 }
-
 textarea{
-
 height:200px;
 resize:none;
-
 }
-
-input:focus, textarea:focus{
-
+input:focus, textarea:focus, select:focus{
 border-color:#8b5e3c;
 box-shadow:0 0 6px rgba(139,94,60,0.25);
 outline:none;
-
 }
 
 /* GENRES */
-
 .genre-group{
-
 margin:30px 18px;
-
 }
-
 .genre-title{
-
 font-weight:600;
 font-size:30px;
-
 margin-bottom:25px;
-
 display:flex;
 align-items:center;
 gap:15px;
-
 color:#5b3f2a;
-
 }
-
 /* TAGS GENRES */
-
 .genres{
-
 display:flex;
 flex-wrap:wrap;
 gap:18px;
-
 }
-
 /* cacher checkbox */
-
 .genres input{
-
 display:none;
-
 }
-
 /* TAG */
-
 .genres span{
-
 display:inline-block;
-
 padding:12px 18px;
-
 background:#f3f3f3;
-
 border-radius:25px;
-
 font-size:25px;
-
 border:1px solid #ddd;
-
 transition:0.25s;
-
 }
-
 /* sélection */
-
 .genres input:checked + span{
-
 background:#6b4f4f;
 color:white;
 border-color:#6b4f4f;
-
 }
 
 /* BOUTON */
-
 button{
-
 width:100%;
-
 padding:16px;
-
 border:none;
-
 border-radius:12px;
-
 background:#25D366;
-
 color:white;
-
 font-size:25px;
 font-weight:600;
-
 margin-top:10px;
-
+}
+button:active{
+transform:scale(0.98);
 }
 
-button:active{
-
-transform:scale(0.98);
-
+/* TEXTE CLUB */
+.club-text{
+margin-top:25px;
+font-size:18px;
+color:#555;
+text-align:center;
+line-height:1.5;
 }
 
 /* scroll mobile plus fluide */
-
 .container::-webkit-scrollbar{
 display:none;
 }
-
 </style>
-
 </head>
-
 <body>
 
 <div class="container">
 
 <h1><i class="fa-solid fa-book-open"></i> À nos lecteurs du dimanche</h1>
-<p>Inscription à notre Book Club d'Abidjan</p>
+<p class="subtitle">Inscription à notre Book Club d'Abidjan</p>
 
 <form id="bookForm">
 
@@ -275,6 +186,39 @@ display:none;
 <div class="input-group">
 <i class="fa-solid fa-phone"></i>
 <input type="tel" id="phone" placeholder="  Numéro WhatsApp" required>
+</div>
+
+<div class="input-group">
+<i class="fa-solid fa-calendar-days"></i>
+<input type="number" id="age" placeholder="  Âge" min="10" max="120" required>
+</div>
+
+<div class="input-group">
+<i class="fa-solid fa-cake-candles"></i>
+<input type="date" id="dob" placeholder="  Date de naissance" required>
+</div>
+
+<div class="input-group">
+<i class="fa-solid fa-venus-mars"></i>
+<select id="sexe" required>
+<option value="">  Sexe</option>
+<option value="Femme">Femme</option>
+<option value="Homme">Homme</option>
+</select>
+</div>
+
+<div class="input-group">
+<i class="fa-solid fa-map-location-dot"></i>
+<input type="text" id="commune" placeholder="  Commune" required>
+</div>
+
+<div class="input-group">
+<i class="fa-solid fa-clock"></i>
+<select id="disponibilite" required>
+<option value="">  Disponibilité</option>
+<option value="1 dimanche par mois">1 dimanche par mois</option>
+<option value="2 dimanches par mois">2 dimanches par mois</option>
+</select>
 </div>
 
 <div class="input-group">
@@ -291,6 +235,7 @@ display:none;
 <div class="genres">
 
 <label><input type="checkbox" value="Aventure"><span>Aventure</span></label>
+<label><input type="checkbox" value="Romance"><span>Romance</span></label>
 <label><input type="checkbox" value="Dark Romance"><span>Dark Romance</span></label>
 <label><input type="checkbox" value="Fantasy"><span>Fantasy</span></label>
 <label><input type="checkbox" value="Science Fiction"><span>Science Fiction</span></label>
@@ -316,21 +261,27 @@ display:none;
 
 </form>
 
+<p class="club-text">
+Notre club réunit les passionnés de lecture autour d’un café chaque deuxième dimanche du mois à Abidjan. Venez partager vos coups de cœur, découvrir de nouveaux genres et échanger avec d’autres lecteurs dans une ambiance conviviale et chaleureuse.
+</p>
+
 </div>
 
 <script>
-
 document.getElementById("bookForm").addEventListener("submit", function(e){
-
 e.preventDefault();
 
 let nom = document.getElementById("nom").value;
 let phone = document.getElementById("phone").value;
+let age = document.getElementById("age").value;
+let dob = document.getElementById("dob").value;
+let sexe = document.getElementById("sexe").value;
+let commune = document.getElementById("commune").value;
+let dispo = document.getElementById("disponibilite").value;
 let livre = document.getElementById("livre").value;
 let motivation = document.getElementById("motivation").value;
 
 let genres = [];
-
 document.querySelectorAll(".genres input:checked").forEach(function(g){
 genres.push(g.value);
 });
@@ -341,18 +292,18 @@ let message = `📚 Nouvelle inscription - À nos lecteurs du dimanche
 
 Nom : ${nom}
 WhatsApp : ${phone}
+Âge : ${age}
+Date de naissance : ${dob}
+Sexe : ${sexe}
+Commune : ${commune}
+Disponibilité : ${dispo}
 Livre préféré : ${livre}
-
 Genres : ${genresText}
-
 Motivation : ${motivation}`;
 
 let url = "https://wa.me/225XXXXXXXX?text=" + encodeURIComponent(message);
-
 window.open(url, "_blank");
-
 });
-
 </script>
 
 </body>
