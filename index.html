@@ -4,10 +4,132 @@
 <meta charset="UTF-8">
 <title>À nos lecteurs du dimanche - Inscription</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#6b4f4f,#d2b48c);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:15px;
+width:420px;
+max-height:90vh;
+overflow-y:auto;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+h1{
+color:#6b4f4f;
+margin-bottom:5px;
+}
+
+p{
+color:#666;
+margin-bottom:25px;
+}
+
+.input-group{
+position:relative;
+margin-bottom:20px;
+}
+
+.input-group i{
+position:absolute;
+left:10px;
+top:50%;
+transform:translateY(-50%);
+color:#6b4f4f;
+}
+
+input, textarea{
+width:100%;
+padding:12px 12px 12px 35px;
+border:1px solid #ddd;
+border-radius:8px;
+outline:none;
+transition:0.3s;
+}
+
+textarea{
+height:80px;
+resize:none;
+}
+
+input:focus, textarea:focus{
+border-color:#6b4f4f;
+box-shadow:0 0 5px rgba(107,79,79,0.3);
+}
+
+.genre-group{
+text-align:left;
+margin-bottom:20px;
+}
+
+.genre-title{
+font-weight:600;
+color:#6b4f4f;
+margin-bottom:10px;
+display:block;
+}
+
+.genres{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+}
+
+.genres label{
+display:flex;
+align-items:center;
+gap:6px;
+background:#f7f3f0;
+padding:8px;
+border-radius:6px;
+cursor:pointer;
+font-size:14px;
+transition:0.2s;
+}
+
+.genres label:hover{
+background:#eaded6;
+}
+
+.genres input{
+accent-color:#6b4f4f;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:8px;
+background:#25D366;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#1ebe5d;
+}
+
+button i{
+margin-right:8px;
+}
+
+</style>
 
 </head>
 
@@ -35,6 +157,41 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 <input type="text" id="livre" placeholder="Livre préféré">
 </div>
 
+<div class="genre-group">
+
+<label class="genre-title">
+<i class="fa-solid fa-bookmark"></i> Types de lecture (plusieurs choix possibles)
+</label>
+
+<div class="genres">
+
+<label><input type="checkbox" value="Aventure">Aventure</label>
+<label><input type="checkbox" value="Dark Romance">Dark Romance</label>
+<label><input type="checkbox" value="Romance">Romance</label>
+<label><input type="checkbox" value="Fantasy">Fantasy</label>
+<label><input type="checkbox" value="Science Fiction">Science Fiction</label>
+<label><input type="checkbox" value="Thriller">Thriller</label>
+<label><input type="checkbox" value="Policier">Policier</label>
+<label><input type="checkbox" value="Horreur">Horreur</label>
+<label><input type="checkbox" value="Développement personnel">Développement personnel</label>
+<label><input type="checkbox" value="Business">Business</label>
+<label><input type="checkbox" value="Psychologie">Psychologie</label>
+<label><input type="checkbox" value="Biographie">Biographie</label>
+<label><input type="checkbox" value="Classique">Classique</label>
+<label><input type="checkbox" value="Poésie">Poésie</label>
+<label><input type="checkbox" value="Conte">Conte</label>
+<label><input type="checkbox" value="Conte africain">Conte africain</label>
+<label><input type="checkbox" value="Histoire">Histoire</label>
+<label><input type="checkbox" value="Histoire africaine">Histoire africaine</label>
+<label><input type="checkbox" value="Spiritualité">Spiritualité</label>
+<label><input type="checkbox" value="Philosophie">Philosophie</label>
+<label><input type="checkbox" value="Littérature africaine">Littérature africaine</label>
+<label><input type="checkbox" value="Essai">Essai</label>
+
+</div>
+
+</div>
+
 <div class="input-group">
 <i class="fa-solid fa-pen"></i>
 <textarea id="motivation" placeholder="Pourquoi veux-tu rejoindre le club ?"></textarea>
@@ -48,7 +205,42 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 </div>
 
-<script src="script.js"></script>
+<script>
+
+document.getElementById("bookForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let nom = document.getElementById("nom").value;
+let phone = document.getElementById("phone").value;
+let livre = document.getElementById("livre").value;
+let motivation = document.getElementById("motivation").value;
+
+let genres = [];
+
+document.querySelectorAll(".genres input:checked").forEach(function(g){
+genres.push(g.value);
+});
+
+let genresText = genres.join(", ");
+
+let message = `📚 Nouvelle inscription - À nos lecteurs du dimanche
+
+👤 Nom : ${nom}
+📱 WhatsApp : ${phone}
+📖 Livre préféré : ${livre}
+
+📚 Genres préférés : ${genresText}
+
+✍ Motivation : ${motivation}`;
+
+let url = "https://wa.me/225XXXXXXXX?text=" + encodeURIComponent(message);
+
+window.open(url, "_blank");
+
+});
+
+</script>
 
 </body>
 </html>
