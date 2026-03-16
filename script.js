@@ -13,6 +13,7 @@ let message = `📚 Nouvelle inscription - Du Café et des Livres
 📱 WhatsApp : ${phone}
 📖 Livre préféré : ${livre}
 ✍ Motivation : ${motivation}
+✍ Motivation : ${motivation}
 
 Je souhaite rejoindre le club de lecture.`;
 
